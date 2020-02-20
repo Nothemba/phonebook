@@ -107,10 +107,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\img5.jpg" />
+    <Content Include="images\img1.jpg" />
     <Content Include="images\IMG1.png" />
     <Content Include="images\IMG2.png" />
+    <Content Include="images\img3.jpg" />
     <Content Include="images\img3.png" />
     <Content Include="images\img4.jpeg" />
+    <Content Include="images\img6.jpg" />
+    <Content Include="images\img7.jpg" />
     <Content Include="Models\UserModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UserModel.Context.cs</LastGenOutput>
@@ -156,6 +161,7 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Extended\User.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\ResetPassworsModel.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
@@ -200,6 +206,8 @@
     <Content Include="Views\Contacts\Edit.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\FogertPassword.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

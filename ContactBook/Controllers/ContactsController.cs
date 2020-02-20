@@ -15,12 +15,20 @@ namespace ContactBook.Controllers
         private ContactModel db = new ContactModel();
 
         // GET: Contacts
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search)
         {
-            return View(db.Contacts.ToList());
+            if (searchBy == "Lastame")
+            {
+                return View(db.Contacts.Where(value => value.LastName == search || search == null).OrderBy(contact => contact.LastName).ToList());
+            }
+            else
+            {
+                return View(db.Contacts.Where(value => value.FirstName.StartsWith(search) || search == null).OrderBy(contact => contact.FirstName).ToList());
+            }
+
         }
 
-        // GET: Contacts/Details/5
+        // GET: Contacts/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -42,9 +50,7 @@ namespace ContactBook.Controllers
         }
 
         // POST: Contacts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ContactID,FirstName,LastName,CellNumber,Email,Address,UserID")] Contact contact)
@@ -59,7 +65,7 @@ namespace ContactBook.Controllers
             return View(contact);
         }
 
-        // GET: Contacts/Edit/5
+        // GET: Contacts/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,9 +80,8 @@ namespace ContactBook.Controllers
             return View(contact);
         }
 
-        // POST: Contacts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Contacts/Edit
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ContactID,FirstName,LastName,CellNumber,Email,Address,UserID")] Contact contact)
@@ -90,7 +95,7 @@ namespace ContactBook.Controllers
             return View(contact);
         }
 
-        // GET: Contacts/Delete/5
+        // GET: Contacts/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +110,7 @@ namespace ContactBook.Controllers
             return View(contact);
         }
 
-        // POST: Contacts/Delete/5
+        // POST: Contacts/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

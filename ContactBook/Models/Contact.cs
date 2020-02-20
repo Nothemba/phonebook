@@ -12,20 +12,23 @@ namespace ContactBook.Models
     {
         public int ContactID { get; set; }
 
-        [Required]
+     
         [StringLength(50)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Firstname is required")]
         public string FirstName { get; set; }
 
         [StringLength(50)]
         public string LastName { get; set; }
 
+        [Phone]
         [StringLength(10)]
-        public string CellNumber { get; set; }
 
+        public string CellNumber { get; set; }
+     
+        [EmailAddress]
         [StringLength(254)]
         public string Email { get; set; }
 
-        [EmailAddress]
         [StringLength(254)]
         public string Address { get; set; }
 

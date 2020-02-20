@@ -9,7 +9,7 @@ namespace ContactBook.Models
 {
     public class UserLogin
     {
-        [Display(Name = "Email")]
+        [Display(Name= "Email")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email required")]
         public string Email { get; set; }
 
